@@ -8,18 +8,18 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">YK</div>
-    <nav>
-      <ul>
-        <li><a href="/home">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/skill" class="active">Skills</a></li>
-        <li><a href="/project">Projects</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
+  <div class="logo">YK</div>
+  <nav id="navbar">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/home" class="active">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/skill">Skills</a></li>
+      <li><a href="/project">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  </nav>
+</header>
   <main class="container">
     <section class="skills-section">
       <h2>Skills & Expertise</h2>
@@ -118,16 +118,38 @@
 
   <script>
     function showTab(tab) {
-    document.querySelectorAll('.tab-content').forEach((el) => {
-      el.classList.remove('active');
-    });
-    document.querySelectorAll('.tab-button').forEach((btn) => {
-      btn.classList.remove('active');
-    });
-  
-    document.getElementById(tab).classList.add('active');
-    document.querySelector(tab-button[onclick="showTab('${tab}')"]).classList.add('active');
+  document.querySelectorAll('.tab-content').forEach((el) => {
+    el.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-button').forEach((btn) => {
+    btn.classList.remove('active');
+  });
+
+  document.getElementById(tab).classList.add('active');
+  document.querySelector(`.tab-button[onclick="showTab('${tab}')"]`).classList.add('active');
+}
+
+// Add this new code for hamburger menu
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+    navLinks.classList.remove('active');
   }
+});
+
+// Close menu when clicking on a link
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
 
   </script>
 </body>
