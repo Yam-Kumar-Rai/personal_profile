@@ -7,18 +7,18 @@
   <link rel="stylesheet" href="/css/contact.css">
 </head>
 <body>
-
   <!-- NAVIGATION BAR -->
   <header class="navbar">
     <div class="logo">My Portfolio</div>
     <nav>
-      <ul>
+      <ul class="nav-links" id="nav-links">
         <li><a href="/home">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/skill">Skills</a></li>
         <li><a href="/project">Projects</a></li>
-        <li><a href="/contact" class="active">Contact</a></li> <!-- Current active page -->
+        <li><a href="/contact" class="active">Contact</a></li>
       </ul>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
     </nav>
   </header>
 
@@ -32,33 +32,23 @@
 
     <!-- CONTACT SECTION WITH GRID LAYOUT -->
     <section class="contact-grid">
-
       <!-- CONTACT FORM CARD -->
       <div class="form-card">
         <h3>Send Me a Message</h3>
-
-        <!-- Form submits to backend route /contact via POST method -->
         <form id="contact-form" method="POST" action="/contact">
-          <!-- User Name -->
           <label for="name">Your Name</label>
           <input type="text" name="name" id="name" placeholder="Enter your name" required />
 
-          <!-- User Email -->
           <label for="email">Email Address</label>
           <input type="email" name="email" id="email" placeholder="Enter your email" required />
 
-          <!-- Subject (optional) -->
           <label for="subject">Subject</label>
           <input type="text" name="subject" id="subject" placeholder="Subject" />
 
-          <!-- Message -->
           <label for="message">Message</label>
           <textarea name="message" id="message" placeholder="Type your message..." required></textarea>
 
-          <!-- Submit Button -->
           <button type="submit">Send Message</button>
-
-          <!-- Typing animation shown when user types -->
           <div class="typing-popup" id="typing-popup">Typing...</div>
         </form>
       </div>
@@ -73,20 +63,17 @@
 
         <!-- SOCIAL LINKS ICONS -->
         <div class="social-icons">
-            <a href="https://www.linkedin.com" target="_blank">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
-            </a>
-            <a href="https://www.facebook.com" target="_blank">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" />
-            </a>
-            <a href="https://www.instagram.com" target="_blank">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
-            </a>
+          <a href="https://www.linkedin.com" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
+          </a>
+          <a href="https://www.facebook.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+          </a>
         </div>
       </div>
-
-      <!-- Optional empty space filler for layout balance -->
-      <div class="info-card empty-card"></div>
     </section>
   </main>
 
@@ -95,15 +82,26 @@
     Designed & Built by Yam Kumar Rai
   </footer>
 
-  <!-- SCRIPT FOR TYPING EFFECT ON TEXTAREA -->
-  <script> 
+  <script>
+    // Form typing effect
     const textarea = document.getElementById('message');
     const popup = document.getElementById('typing-popup');
 
-    // Show/hide "Typing..." popup based on input
     textarea?.addEventListener('input', () => {
       popup.style.display = textarea.value.trim() ? 'block' : 'none';
     });
-  </script>
+
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+  document.querySelector('.nav-links').classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  const menu = document.querySelector('.nav-links');
+  const toggle = document.querySelector('.menu-toggle');
+  if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+    menu.classList.remove('active');
+  }
+});  </script>
 </body>
 </html>

@@ -175,23 +175,24 @@ footer {
 
 /* Style the link as a button */
 .admin-btn {
-    position: absolute; /* Position the button inside the footer */
-    bottom: 10px; /* Distance from the bottom of the footer */
-    left: 20px; /* Distance from the left edge of the footer */
+    position: absolute;
+    bottom: 18px; /* shifted 2 cm upward from original 10px */
+    left: 20px;
     display: inline-block;
-    background-color:  #223e66; /* Green color */
+    background-color:  #223e66;
     color: white;
     text-decoration: none;
-    border-radius: 30px; /* Slightly rounded corners */
+    border-radius: 30px;
     font-size: 12px;
     font-weight: bold;
     text-align: center;
-    padding: 8px 12px; /* Larger padding */
-    width: auto; /* Let the button size adjust based on content */
-    text-transform: uppercase; /* Optional: makes text uppercase */
-    transition: background-color 0.3s, transform 0.2s; /* Add transition for smooth hover effect */
-    z-index: 1000; /* Ensure the button appears above other content */
+    padding: 8px 12px;
+    width: auto;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 1000;
 }
+
 
 /* Add hover effect for the button */
 .admin-btn:hover {
