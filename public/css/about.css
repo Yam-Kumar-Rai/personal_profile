@@ -187,7 +187,9 @@
       right: 0;
       background: #0e1c2f;
       flex-direction: column;
-      width: 200px;
+      width: 110px;
+      line-height: 0.5;
+      border-radius: 5px;
       padding: 1rem;
       border: 1px solid #0ef;
     }
