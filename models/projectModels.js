@@ -1,10 +1,23 @@
-// backend/models/projectModel.js
-const db = require('../config/db'); // your DB connection module
+const db = require('../config/db'); // your DB connection
 
-// Fetch all projects from the database
-async function getAllProjects() {
-  const result = await db.query('SELECT * FROM projects ORDER BY id DESC');
-  return result.rows;
+async function createProjectsTable() {
+  const query = `
+    CREATE TABLE IF NOT EXISTS projects (
+      id SERIAL PRIMARY KEY,
+      title VARCHAR(255) NOT NULL,
+      description TEXT,
+      image TEXT,
+      link TEXT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+
+  try {
+    await db.query(query);
+    console.log('Projects table created successfully!');
+  } catch (error) {
+    console.error('Error creating projects table:', error);
+  }
 }
 
-module.exports = { getAllProjects };
+createProjectsTable();

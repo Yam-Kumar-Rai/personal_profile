@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated } = require('../middleware/authMiddleware');
 const { getAllProjects } = require('../models/projectModels');
+const { getAllContacts } = require('../models/ContactModels');
 
 // Unified dashboard route
 router.get('/dashboard', ensureAuthenticated, async (req, res) => {
