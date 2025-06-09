@@ -6,7 +6,7 @@ const { ensureAuthenticated, ensureAdmin } = require('../middleware/authMiddlewa
 // Admin dashboard
 router.get('/dashboard', ensureAuthenticated, ensureAdmin, async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM projects ORDER BY date DESC');
+    const result = await pool.query('SELECT * FROM projects ORDER BY project_date DESC');
     res.render('Admin/dashboard', { projects: result.rows });
   } catch (err) {
     console.error('Error loading dashboard:', err);
@@ -37,10 +37,10 @@ router.get('/edit/:id', ensureAuthenticated, ensureAdmin, async (req, res) => {
 router.post('/edit/:id', ensureAuthenticated, ensureAdmin, async (req, res) => {
   try {
     const projectId = req.params.id;
-    const { title, description, link, date } = req.body;
+    const { title, description, link, project_date } = req.body;
     await pool.query(
-      'UPDATE projects SET title = $1, description = $2, link = $3, date = $4 WHERE id = $5',
-      [title, description, link, date, projectId]
+      'UPDATE projects SET title = $1, description = $2, link = $3, project_date = $4 WHERE id = $5',
+      [title, description, link, project_date, projectId]
     );
     res.redirect('/Admin/dashboard');
   } catch (err) {

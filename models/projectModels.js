@@ -8,7 +8,7 @@ async function createProjectsTable() {
       description TEXT,
       image TEXT,
       link TEXT,
-      created_at DATE DEFAULT CURRENT_DATE,
+      project_date DATE DEFAULT CURRENT_DATE,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `;

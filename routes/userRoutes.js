@@ -5,7 +5,7 @@ const pool = require('../config/db'); // ✅ Correct import, no destructuring
 // Users' project page
 router.get('/project', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM projects ORDER BY date DESC');
+    const result = await pool.query('SELECT * FROM projects ORDER BY project_date DESC');
     const projects = result.rows;
     res.render('Users/project', { projects }); // ✅ Ensure 'Users/project' is the correct view path
   } catch (err) {
